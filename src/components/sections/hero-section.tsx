@@ -34,8 +34,8 @@ export function HeroSection() {
             Lucas Vasconcelos
           </h1>
           <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            Desenvolvendo produtos digitais escaláveis com foco em experiência
-            premium, arquitetura sólida e resultados mensuráveis para negócios.
+            Desenvolvedor Full Stack
+            Construindo aplicações web com React, Node.js e APIs REST, com experiência prática em Cloud (AWS/GCP), integração de sistemas e boas práticas de Clean Code.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

@@ -14,8 +14,8 @@ export function AboutSection() {
     <section id="sobre" className="space-y-8 py-16">
       <SectionHeading
         eyebrow="Sobre Mim"
-        title="Engenharia com foco em produto e impacto real"
-        description="Atuo conectando estratégia, design e desenvolvimento para transformar objetivos de negócio em experiências digitais claras, eficientes e escaláveis."
+        title="Em formação técnica, com experiência prática desde o primeiro estágio"
+        description="Combino estudo contínuo em Engenharia de Software com experiência real em projetos de desenvolvimento web, unindo teoria e prática desde cedo na carreira."
       />
 
       <div className="grid gap-6 md:grid-cols-2">

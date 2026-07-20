@@ -61,19 +61,23 @@ export type PortfolioProject = {
 
 export const aboutContent = {
   intro:
-    "Sou desenvolvedor Full Stack focado em construir produtos digitais com alto padrão técnico, design orientado a resultado e arquitetura preparada para evolução contínua.",
+    "Sou Desenvolvedor Full Stack e estudante de Engenharia de Software, com experiência no desenvolvimento de aplicações web utilizando React, Node.js, TypeScript e APIs REST.",
+
   trajectory:
-    "Minha trajetória combina desenvolvimento frontend moderno, construção de APIs robustas e boas práticas de engenharia para entregar software confiável e escalável.",
+    "Desde 2023, venho construindo experiência prática por meio de estágios e projetos freelance, atuando no desenvolvimento de aplicações, integração de sistemas, criação de APIs, dashboards e implantação de soluções em ambientes cloud.",
+
   objectives:
-    "Busco contribuir em times de alta performance, transformando desafios de negócio em soluções claras, mensuráveis e centradas no usuário.",
+    "Busco evoluir continuamente como desenvolvedor, aprofundando meus conhecimentos em arquitetura de software, computação em nuvem e boas práticas de engenharia para construir soluções escaláveis, eficientes e de fácil manutenção.",
+
   highlights: [
-    "Arquitetura orientada a manutenção e crescimento",
-    "Decisões guiadas por performance e experiência",
-    "Código limpo, tipado e testável",
-    "Colaboração próxima com produto e design",
+    "Aprendizado contínuo e adaptação rápida — facilidade para absorver novas tecnologias e me adaptar a diferentes stacks e contextos de projeto.",
+    "Base sólida em fundamentos — formação em Engenharia de Software, com foco em arquitetura de software, estrutura de dados e boas práticas de desenvolvimento.",
+    "Visão prática de suporte e produção — experiência com análise de incidentes, troubleshooting e suporte técnico, proporcionando uma visão mais completa do ciclo de vida de um sistema.",
+    "Colaboração e organização — atuação em ambientes ágeis (Scrum), aplicando Clean Code, versionamento com Git/GitHub e boas práticas de desenvolvimento.",
   ],
+
   philosophy:
-    "Desenvolvimento de qualidade é equilíbrio entre visão de produto, excelência técnica e atenção rigorosa aos detalhes de UX.",
+    "Acredito que um bom desenvolvimento nasce da combinação entre aprendizado contínuo, atenção aos detalhes técnicos e comunicação clara com o time. Busco criar soluções bem estruturadas, fáceis de manter e que gerem valor para usuários e negócios.",
 };
 
 export const technologyCategories: Array<{
