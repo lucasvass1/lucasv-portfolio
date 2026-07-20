@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07090d;
+  --foreground: #f5f7fa;
+  --muted: #0f131a;
+  --muted-foreground: #a4adba;
+  --border: #1a2230;
+  --card: #0c1016;
+  --card-foreground: #eff4ff;
+  --accent: #61a5ff;
+  --accent-foreground: #08111f;
+  --ring: #61a5ff;
+  --success: #1e7f52;
+  --success-foreground: #e9fff4;
+  --warning: #c2822b;
+  --warning-foreground: #fff6e7;
+  --danger: #a13a43;
+  --danger-foreground: #ffeef0;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.25rem;
+  --shadow-soft: 0 10px 30px -18px rgb(8 14 28 / 0.55);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.light {
+  --background: #f6f8fc;
+  --foreground: #0f1726;
+  --muted: #e9eef8;
+  --muted-foreground: #48566d;
+  --border: #dce4f3;
+  --card: #ffffff;
+  --card-foreground: #0f1726;
+  --accent: #0f5de2;
+  --accent-foreground: #f8fbff;
+  --ring: #0f5de2;
+  --success: #12874d;
+  --success-foreground: #ecfff4;
+  --warning: #cc7f0c;
+  --warning-foreground: #fff5e8;
+  --danger: #ba3343;
+  --danger-foreground: #fff0f1;
+  --shadow-soft: 0 10px 30px -18px rgb(20 40 80 / 0.4);
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+}
+
+.surface {
+  background:
+    radial-gradient(900px circle at 15% 10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 45%),
+    radial-gradient(900px circle at 85% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 40%),
+    var(--background);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 65%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 65%, transparent) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse at top, black 35%, transparent 78%);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

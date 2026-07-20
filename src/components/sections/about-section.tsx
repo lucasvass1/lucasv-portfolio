@@ -1,0 +1,58 @@
+import { aboutContent } from "@/data/portfolio-content";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { SectionHeading } from "@/components/ui/section-heading";
+
+export function AboutSection() {
+  return (
+    <section id="sobre" className="space-y-8 py-16">
+      <SectionHeading
+        eyebrow="Sobre Mim"
+        title="Engenharia com foco em produto e impacto real"
+        description="Atuo conectando estratégia, design e desenvolvimento para transformar objetivos de negócio em experiências digitais claras, eficientes e escaláveis."
+      />
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <Badge className="w-fit" variant="neutral">
+              Trajetória
+            </Badge>
+            <CardTitle>Quem sou e como trabalho</CardTitle>
+            <CardDescription>{aboutContent.intro}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm leading-6 text-muted-foreground">
+            <p>{aboutContent.trajectory}</p>
+            <p>{aboutContent.objectives}</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Badge className="w-fit" variant="success">
+              Diferenciais
+            </Badge>
+            <CardTitle>Filosofia de desenvolvimento</CardTitle>
+            <CardDescription>{aboutContent.philosophy}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {aboutContent.highlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-2">
+                  <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}

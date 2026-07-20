@@ -1,0 +1,13 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1200" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#0A0F1B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#g2)"/>
+  <rect x="120" y="120" width="270" height="120" rx="20" fill="#99F6E4" fill-opacity="0.18"/>
+  <rect x="430" y="240" width="320" height="120" rx="20" fill="#99F6E4" fill-opacity="0.16"/>
+  <rect x="790" y="140" width="280" height="120" rx="20" fill="#99F6E4" fill-opacity="0.14"/>
+  <text x="90" y="610" fill="#F5F7FA" font-family="Arial, sans-serif" font-size="54" font-weight="700">DevOps Insight Hub</text>
+</svg>
