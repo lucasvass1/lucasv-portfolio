@@ -451,9 +451,9 @@ export const skills = {
 export const profile = {
   name: "Lucas Vasconcelos",
   role: "Full Stack Developer",
-  email: "contato@lucasvasconcelos.dev",
-  whatsappUrl: "https://wa.me/5500000000000",
-  linkedinUrl: "https://www.linkedin.com/in/lucasvasconcelos",
-  githubUrl: "https://github.com/lucasvasconcelos",
-  resumeUrl: "/curriculo-lucas-vasconcelos.pdf",
+  email: "lucasvasconcelos1202@gmail.com",
+  whatsappUrl: "https://wa.me/5583981052397",
+  linkedinUrl: "https://www.linkedin.com/in/lucasvasconcelos1202/",
+  githubUrl: "https://github.com/lucasvass1",
+  resumeUrl: "/Lucas_Vasconcelos_Curriculo.pdf",
 };
