@@ -23,7 +23,10 @@ export type TechnologyIcon =
   | "workflow"
   | "pen-tool"
   | "send"
-  | "notebook";
+  | "notebook"
+  | "layers"
+  | "route"
+  | "file-code";
 
 export type ProjectStatus =
   | "Em Produção"
@@ -85,36 +88,101 @@ export const technologyCategories: Array<{
   items: Technology[];
 }> = [
   {
-    category: "Frontend",
-    items: [
-      { name: "React", description: "Interfaces componíveis e escaláveis", icon: "layout" },
-      { name: "Next.js", description: "SSR/SEO e performance de produção", icon: "rocket" },
-      { name: "TypeScript", description: "Tipagem estática para confiabilidade", icon: "braces" },
-      { name: "Tailwind CSS", description: "Design system ágil e consistente", icon: "palette" },
-    ],
+  category: "Frontend",
+items: [
+  {
+    name: "React",
+    description: "Desenvolvimento de interfaces modernas, componentizadas e responsivas.",
+    icon: "layout",
   },
   {
-    category: "Backend",
-    items: [
-      { name: "Node.js", description: "Serviços orientados a I/O e APIs", icon: "server" },
-      { name: "NestJS", description: "Arquitetura modular para sistemas complexos", icon: "blocks" },
-      { name: "REST APIs", description: "Contratos claros e documentação objetiva", icon: "waypoints" },
-    ],
+    name: "Redux",
+    description: "Gerenciamento de estado para aplicações React.",
+    icon: "layers",
   },
   {
-    category: "Banco de Dados",
-    items: [
-      { name: "PostgreSQL", description: "Modelagem relacional robusta", icon: "database" },
-      { name: "Prisma", description: "ORM tipado com migrações seguras", icon: "git-branch" },
-      { name: "Redis", description: "Cache e filas para alta performance", icon: "zap" },
-    ],
+    name: "React Router",
+    description: "Gerenciamento de rotas em aplicações SPA.",
+    icon: "route",
   },
   {
-    category: "Cloud",
-    items: [
-      { name: "Vercel", description: "Deploy contínuo para aplicações web", icon: "cloud" },
-      { name: "AWS", description: "Serviços escaláveis em produção", icon: "cpu" },
-    ],
+    name: "TypeScript",
+    description: "Tipagem estática para maior segurança e manutenibilidade do código.",
+    icon: "braces",
+  },
+  {
+    name: "JavaScript",
+    description: "Linguagem base para o desenvolvimento de aplicações web.",
+    icon: "file-code",
+  },
+  {
+    name: "Tailwind CSS",
+    description: "Estilização rápida e consistente para interfaces modernas.",
+    icon: "palette",
+  },
+],
+  },
+   {
+  category: "Backend",
+  items: [
+    {
+      name: "Node.js",
+      description: "Runtime JavaScript para desenvolvimento de aplicações backend.",
+      icon: "server",
+    },
+    {
+      name: "Express",
+      description: "Framework minimalista para criação de APIs e servidores web.",
+      icon: "blocks",
+    },
+    {
+      name: "APIs REST",
+      description: "Desenvolvimento de APIs RESTful com boas práticas e arquitetura escalável.",
+      icon: "waypoints",
+    },
+  ],
+  },
+  {
+   category: "Banco de Dados",
+  items: [
+    {
+      name: "PostgreSQL",
+      description: "Banco de dados relacional utilizado para aplicações robustas e escaláveis.",
+      icon: "database",
+    },
+    {
+      name: "SQL",
+      description: "Criação de consultas, manipulação de dados e modelagem de bancos relacionais.",
+      icon: "database",
+    },
+    {
+      name: "Prisma",
+      description: "ORM tipado utilizado para integração com PostgreSQL e gerenciamento de migrações.",
+      icon: "git-branch",
+    },
+  ],
+
+  },
+  {
+      category: "Cloud",
+  items: [
+    {
+      name: "AWS",
+      description: "Conhecimento em serviços de nuvem para hospedagem e infraestrutura.",
+      icon: "cloud",
+    },
+    {
+      name: "Google Cloud",
+      description: "Experiência com serviços de computação em nuvem.",
+      icon: "cpu",
+    },
+    
+    {
+      name: "Vercel",
+      description: "Deploy contínuo e hospedagem de aplicações Next.js e React.",
+      icon: "cloud",
+    },
+  ],
   },
   {
     category: "DevOps",
@@ -125,11 +193,43 @@ export const technologyCategories: Array<{
   },
   {
     category: "Ferramentas",
-    items: [
-      { name: "Figma", description: "Prototipação e handoff de UI", icon: "pen-tool" },
-      { name: "Postman", description: "Validação e testes de APIs", icon: "send" },
-      { name: "Notion", description: "Documentação e gestão de fluxo", icon: "notebook" },
-    ],
+  items: [
+    {
+      name: "Git",
+      description: "Controle de versão, gerenciamento de branches e fluxo de desenvolvimento.",
+      icon: "git-branch",
+    },
+    {
+      name: "GitHub",
+      description: "Hospedagem de repositórios, colaboração e versionamento de código.",
+      icon: "git-branch",
+    },
+    {
+      name: "Postman",
+      description: "Testes, validação e documentação de APIs.",
+      icon: "send",
+    },
+    {
+      name: "Figma",
+      description: "Prototipação de interfaces e colaboração com designers.",
+      icon: "pen-tool",
+    },
+    {
+      name: "Trello",
+      description: "Organização de tarefas e gerenciamento ágil de projetos.",
+      icon: "workflow",
+    },
+    {
+      name: "Notion",
+      description: "Documentação técnica e organização de projetos.",
+      icon: "notebook",
+    },
+    {
+      name: "Power BI",
+      description: "Criação de dashboards e análise de dados.",
+      icon: "blocks",
+    },
+  ],
   },
 ];
 

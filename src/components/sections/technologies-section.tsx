@@ -45,6 +45,9 @@ const iconMap: Record<TechnologyIcon, ComponentType<{ size?: number; className?:
   "pen-tool": PenTool,
   send: Send,
   notebook: Notebook,
+  layers: LayoutPanelTop,
+  route: Waypoints,
+  "file-code": Braces,
 };
 
 export function TechnologiesSection() {
@@ -59,7 +62,7 @@ export function TechnologiesSection() {
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {technologyCategories.map((group) => (
           <Card key={group.category} className="h-full">
-            <CardHeader>
+            <CardHeader className="pb-4">
               <CardTitle className="flex items-center gap-2 text-base">
                 <span className="inline-block h-2 w-2 rounded-full bg-accent" />
                 {group.category}
