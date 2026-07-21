@@ -17,8 +17,7 @@ export function SiteFooter() {
         <div className="space-y-2">
           <p className="text-sm font-semibold tracking-wide uppercase">{profile.name}</p>
           <p className="text-sm text-muted-foreground">
-            Portfólio profissional desenvolvido com foco em performance, design e
-            escalabilidade.
+            Desenvolvedor Full Stack em formação, construindo experiência com cada projeto.
           </p>
         </div>
 

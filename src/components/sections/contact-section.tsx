@@ -146,9 +146,8 @@ export function ContactSection() {
         <Card className="h-fit">
           <CardHeader className="space-y-3">
             <CardTitle>Canais diretos</CardTitle>
-            <p className="text-sm text-muted-foreground">
-              Também podemos conversar por canais rápidos para acelerar o início
-              do projeto.
+            <p className="text-sm text-muted-foreground pb-4">
+              Também podemos conversar por canais rápidos para agilizar o primeiro contato.
             </p>
           </CardHeader>
           <CardContent className="space-y-3">
