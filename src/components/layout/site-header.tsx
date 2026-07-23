@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -18,14 +18,11 @@ const navItems = [
   { href: "#contato", label: "Contato" },
 ];
 
+const sectionIds = navItems.map((item) => item.href.slice(1));
+
 export function SiteHeader() {
   const [activeHref, setActiveHref] = useState("#inicio");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const sectionIds = useMemo(
-    () => navItems.map((item) => item.href.replace("#", "")),
-    [],
-  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,7 +57,7 @@ export function SiteHeader() {
     });
 
     return () => observer.disconnect();
-  }, [sectionIds]);
+  }, []);
 
   const renderNavLink = (href: string, label: string) => (
     <a
@@ -73,7 +70,7 @@ export function SiteHeader() {
           : "text-muted-foreground hover:bg-muted hover:text-foreground",
       )}
       onClick={() => setIsMobileMenuOpen(false)}
-      aria-current={activeHref === href ? "page" : undefined}
+      aria-current={activeHref === href ? "location" : undefined}
     >
       {label}
     </a>
@@ -105,6 +102,8 @@ export function SiteHeader() {
       </div>
       <nav
         aria-label="Navegação mobile"
+        aria-hidden={!isMobileMenuOpen}
+        inert={!isMobileMenuOpen}
         className={cn(
           "grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 md:hidden",
           isMobileMenuOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",

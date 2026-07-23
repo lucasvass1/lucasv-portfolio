@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowUpRight, Code2, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProjectLinks } from "@/components/ui/project-links";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { allProjects, type ProjectCategory } from "@/data/portfolio-content";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
@@ -21,16 +22,15 @@ const categoryOptions: Array<"Todos" | ProjectCategory> = [
   "Outros",
 ];
 
+const technologyOptions = [
+  "Todas",
+  ...new Set(allProjects.flatMap((project) => project.technologies).sort()),
+];
+
 export function AllProjectsSection() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<"Todos" | ProjectCategory>("Todos");
   const [selectedTechnology, setSelectedTechnology] = useState("Todas");
-
-  const technologies = useMemo(
-    () =>
-      ["Todas", ...new Set(allProjects.flatMap((project) => project.technologies).sort())],
-    [],
-  );
 
   const filteredProjects = useMemo(() => {
     const normalizedTerm = searchTerm.trim().toLowerCase();
@@ -57,6 +57,7 @@ export function AllProjectsSection() {
 
       <div className="space-y-4 rounded-[var(--radius-lg)] border bg-card p-4 md:p-6">
         <label className="relative block">
+          <span className="sr-only">Pesquisar projeto por nome</span>
           <Search
             size={16}
             className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground"
@@ -70,10 +71,10 @@ export function AllProjectsSection() {
           />
         </label>
 
-        <div className="space-y-3">
-          <p className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+        <fieldset className="space-y-3">
+          <legend className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
             Categoria
-          </p>
+          </legend>
           <div className="flex flex-wrap gap-2">
             {categoryOptions.map((category) => (
               <Button
@@ -82,32 +83,38 @@ export function AllProjectsSection() {
                 size="sm"
                 variant={selectedCategory === category ? "default" : "secondary"}
                 onClick={() => setSelectedCategory(category)}
+                aria-pressed={selectedCategory === category}
               >
                 {category}
               </Button>
             ))}
           </div>
-        </div>
+        </fieldset>
 
-        <div className="space-y-3">
-          <p className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+        <fieldset className="space-y-3">
+          <legend className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
             Tecnologia
-          </p>
+          </legend>
           <div className="flex flex-wrap gap-2">
-            {technologies.map((technology) => (
+            {technologyOptions.map((technology) => (
               <Button
                 key={technology}
                 type="button"
                 size="sm"
                 variant={selectedTechnology === technology ? "default" : "secondary"}
                 onClick={() => setSelectedTechnology(technology)}
+                aria-pressed={selectedTechnology === technology}
               >
                 {technology}
               </Button>
             ))}
           </div>
-        </div>
+        </fieldset>
       </div>
+
+      <p className="sr-only" aria-live="polite">
+        {filteredProjects.length} {filteredProjects.length === 1 ? "projeto encontrado" : "projetos encontrados"}.
+      </p>
 
       {filteredProjects.length ? (
         <div className="grid gap-6 lg:grid-cols-2">
@@ -145,20 +152,7 @@ export function AllProjectsSection() {
                   <span>{project.category}</span>
                   <span>{project.year}</span>
                 </div>
-                <div className="flex gap-2">
-                  <Button asChild className="flex-1">
-                    <a href={project.demoUrl}>
-                      Ver Projeto
-                      <ArrowUpRight size={15} />
-                    </a>
-                  </Button>
-                  <Button asChild variant="secondary" className="flex-1">
-                    <a href={project.githubUrl}>
-                      GitHub
-                      <Code2 size={15} />
-                    </a>
-                  </Button>
-                </div>
+                <ProjectLinks project={project} />
               </CardContent>
             </Card>
           ))}

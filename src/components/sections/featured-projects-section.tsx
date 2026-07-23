@@ -1,9 +1,8 @@
-import { ArrowUpRight, Code2 } from "lucide-react";
 import Image from "next/image";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProjectLinks } from "@/components/ui/project-links";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { featuredProjects } from "@/data/portfolio-content";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
@@ -55,20 +54,7 @@ export function FeaturedProjectsSection() {
                 <span>{project.category}</span>
                 <span>{project.year}</span>
               </div>
-              <div className="flex gap-2">
-                <Button asChild className="flex-1">
-                  <a href={project.demoUrl}>
-                    Ver Projeto
-                    <ArrowUpRight size={15} />
-                  </a>
-                </Button>
-                <Button asChild variant="secondary" className="flex-1">
-                  <a href={project.githubUrl}>
-                    GitHub
-                    <Code2 size={15} />
-                  </a>
-                </Button>
-              </div>
+              <ProjectLinks project={project} />
             </CardContent>
           </Card>
         ))}

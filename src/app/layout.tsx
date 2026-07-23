@@ -16,7 +16,26 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Lucas Vasconcelos | Full Stack Developer",
   description:
-    "Portfólio profissional de Lucas Vasconcelos com projetos, experiência e resultados em desenvolvimento Full Stack.",
+    "Portfólio profissional de Lucas Vasconcelos, desenvolvedor Full Stack com experiência em React, Node.js, TypeScript e cloud.",
+  keywords: ["Lucas Vasconcelos", "desenvolvedor full stack", "React", "Node.js", "TypeScript"],
+  authors: [{ name: "Lucas Vasconcelos" }],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Lucas Vasconcelos | Full Stack Developer",
+    description:
+      "Projetos, experiência e competências em desenvolvimento Full Stack.",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Lucas Vasconcelos | Full Stack Developer",
+    description:
+      "Projetos, experiência e competências em desenvolvimento Full Stack.",
+  },
 };
 
 export default function RootLayout({

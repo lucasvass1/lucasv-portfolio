@@ -62,6 +62,14 @@ export type PortfolioProject = {
   featured: boolean;
 };
 
+type Certification = {
+  name: string;
+  institution: string;
+  date: string;
+  certificateUrl?: string;
+  credencial?: string;
+};
+
 export const aboutContent = {
   intro:
     "Sou Desenvolvedor Full Stack e estudante de Engenharia de Software, com experiência no desenvolvimento de aplicações web utilizando React, Node.js, TypeScript e APIs REST.",
@@ -344,107 +352,104 @@ export const featuredProjects = allProjects.filter((project) => project.featured
 
 export const experiences = [
   {
-    company: "NovaStack Labs",
-    role: "Senior Full Stack Developer",
-    period: "2024 - Atual",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "AWS"],
+    company: "Compass UOL",
+    role: "Desenvolvedor Full Stack",
+    period: "MAR 2025 - Atual",
+    technologies: ["React", "Redux", "TypeScript", "Node.js", "Express", "Docker" , "AWS"],
     responsibilities: [
-      "Liderança técnica de features críticas em produtos SaaS.",
-      "Definição de arquitetura frontend/backend para escalabilidade.",
-      "Mentoria de desenvolvedores em práticas de qualidade e performance.",
-    ],
-    results: [
-      "Redução de 38% no tempo de carregamento de páginas estratégicas.",
-      "Aumento de 27% na conversão após melhoria de UX e fluxo de onboarding.",
+      "Desenvolvimento de aplicações web com React, Redux e TypeScript, criando interfaces responsivas e componentizadas.",
+      "Criação e manutenção de APIs RESTful com Node.js e Express, integrando front-end e back-end.",
+      "Deploy de aplicações na AWS (EC2) utilizando Docker para padronização de ambiente.",
+      "Análise de incidentes e suporte na identificação e resolução de falhas em sistemas.",
+      "Validação de funcionalidades e apoio em testes manuais antes de releases.",
+      'Atuação em metodologias ágeis (Scrum), aplicando boas práticas de Clean Code.',
     ],
   },
   {
-    company: "PixelForge Studio",
-    role: "Full Stack Developer",
-    period: "2022 - 2024",
-    technologies: ["React", "TypeScript", "NestJS", "Docker"],
+    company: "SECITEC",
+    role: "Estágio em Desenvolvimento",
+    period: "AGO 2023 - AGO 2024",
+    technologies: ["React", "Node.js", "TypeScript", "Power BI", "Git"],
     responsibilities: [
-      "Entrega de aplicações web de ponta a ponta para clientes B2B.",
-      "Implementação de integrações com serviços externos e gateways.",
-      "Criação de pipelines CI/CD para reduzir risco de deploy.",
-    ],
-    results: [
-      "Diminuição de 45% no volume de bugs críticos pós-release.",
-      "Padronização técnica que reduziu o tempo de desenvolvimento em 22%.",
+      "Desenvolvimento e manutenção de sistemas internos com React, Node.js e TypeScript.",
+      "Criação de dashboards integrados ao Power BI para apoio na análise de dados e indicadores.",
+      "Suporte técnico a sistemas e usuários internos, com atendimento a demandas e resolução de problemas.",
+      "Controle de versão e organização de entregas com Git/GitHub.",
+      "Implementação de novas funcionalidades e melhorias em aplicações existentes.",
     ],
   },
   {
-    company: "Freelance / Consultoria",
-    role: "Product-Oriented Developer",
-    period: "2020 - 2022",
-    technologies: ["Next.js", "React", "Firebase", "Figma"],
+    company: "Freelancer",
+    role: "Projetos Autônomos",
+    period: "2023 - Atual",
+    technologies: ["React", "Redux", "TypeScript", "Node.js", "Express", "Docker" , "AWS"],
     responsibilities: [
-      "Construção de MVPs e plataformas web para validação de negócio.",
-      "Alinhamento direto com stakeholders para priorização de roadmap.",
-    ],
-    results: [
-      "Lançamento de múltiplos produtos com menor time-to-market.",
-      "Taxa de retenção superior à média em projetos focados em UX.",
+      "Desenvolvimento de sistema para a Secretaria de Turismo de João Pessoa (SETUR).",
+      "Construção do site institucional do projeto Academia da Cidade, da Prefeitura de João Pessoa.",
+      "Apoio no desenvolvimento da plataforma Qualifica cursos, voltada para cursos gratuitos oferecidos pela prefeitura de João Pessoa.",
+      "Apoio na análise de requisitos, automação e otimização de processos digitais.",
     ],
   },
 ];
 
-export const certifications = [
+export const certifications: Certification[] = [
   {
-    name: "AWS Certified Developer - Associate",
+    name: "AWS Certified Cloud Practitioner",
     institution: "Amazon Web Services",
     date: "2025",
-    certificateUrl: "#",
+    certificateUrl: "https://cp.certmetrics.com/amazon/en/public/verify/credential",
+    credencial: "08bd304f9b214360b7756649784564e5",
   },
   {
-    name: "Professional Scrum Master I (PSM I)",
-    institution: "Scrum.org",
-    date: "2024",
-    certificateUrl: "#",
+    name: "Google Cloud Computing Foundations",
+    institution: "Google Cloud",
+    date: "2026",
+    certificateUrl: "https://www.credly.com/earner/earned/badge/e3333cf3-eeb3-405d-bec8-836a51afb295",
   },
   {
-    name: "Meta Front-End Developer",
-    institution: "Meta / Coursera",
-    date: "2023",
-    certificateUrl: "#",
+    name: "Github Actions - Em andamento",
+    institution: "GitHub - Microsoft",
+    date: "2026",
+  },
+  {
+    name: "Suporte Técnico",
+    institution: "Google / Coursera",
+    date: "2022",
+    certificateUrl: "https://www.coursera.org/account/accomplishments/certificate/H6TRWTGCSMUV",
   },
 ];
 
 export const education = [
   {
-    course: "Análise e Desenvolvimento de Sistemas",
-    institution: "Universidade X",
-    period: "2021 - 2024",
-    status: "Concluído",
-  },
-  {
-    course: "MBA em Engenharia de Software",
-    institution: "Instituição Y",
-    period: "2025 - 2026",
+    course: "Engenharia de Software",
+    institution: "Unicesumar",
+    period: "2022 - 2026",
     status: "Em andamento",
   },
 ];
 
 export const skills = {
   hard: [
-    "Arquitetura de Software",
-    "React / Next.js",
-    "Node.js / APIs REST",
+    "React / Redux",
+    "Node.js / Express",
+    "APIs REST",
     "TypeScript",
-    "Banco de Dados SQL",
-    "CI/CD e DevOps",
-    "Acessibilidade Web",
-    "Performance Frontend",
+    "Banco de Dados SQL / PostgreSQL",
+    "AWS / Google Cloud",
+    "Docker / CI/CD",
+    "Git / GitHub",
+    "Power BI",
+    "Postman",
+    "Figma",
   ],
   soft: [
     "Comunicação clara",
-    "Pensamento sistêmico",
-    "Colaboração multidisciplinar",
-    "Liderança técnica",
-    "Senso de produto",
+    "Pensamento analítico e crítico",
+    "Colaboração em equipe",
+    "Senso de organização",
     "Ownership",
     "Resolução de problemas",
-    "Mentoria",
+    "Adaptabilidade",
   ],
 };
 

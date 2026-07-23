@@ -8,8 +8,8 @@ export function ExperienceSection() {
     <section id="experiencia" className="space-y-8 py-16">
       <SectionHeading
         eyebrow="Experiência Profissional"
-        title="Timeline orientada a resultados"
-        description="Experiências com foco em impacto mensurável, colaboração entre áreas e evolução contínua de produtos digitais."
+        title="Trajetória de aprendizado prático"
+        description="Experiências que combinam desenvolvimento full stack, suporte técnico e contato direto com sistemas em produção."
       />
 
       <div className="relative space-y-6 before:absolute before:top-0 before:bottom-0 before:left-2 before:w-px before:bg-border md:before:left-4">
@@ -46,11 +46,11 @@ export function ExperienceSection() {
                   </ul>
                 </div>
                 <div>
-                  <p className="mb-2 text-sm font-semibold">Resultados</p>
+                  <p className="mb-2 text-sm font-semibold">Tecnologias</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    {experience.results.map((item) => (
+                    {experience.technologies.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-success" />
+                        <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-accent" />
                         <span>{item}</span>
                       </li>
                     ))}

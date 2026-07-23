@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Code2, Mail, FileDown } from "lucide-react";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/portfolio-content";
@@ -14,6 +16,9 @@ const heroActions = [
 ];
 
 export function HeroSection() {
+  const { resolvedTheme } = useTheme();
+  const avatarSrc = resolvedTheme === "light" ? "/Avatar 2.png" : "/Avatar.png";
+
   return (
     <section
       id="inicio"
@@ -66,11 +71,14 @@ export function HeroSection() {
         transition={{ duration: 0.6, ease: [0.21, 1, 0.32, 1] }}
         className="mx-auto aspect-square w-full max-w-72 rounded-3xl border bg-gradient-to-b from-card to-muted p-2"
       >
-        <div className="flex h-full items-center justify-center rounded-[1.15rem] border border-dashed text-center text-sm text-muted-foreground">
-          Foto profissional
-          <br />
-          ou avatar
-        </div>
+        <Image
+          src={avatarSrc}
+          alt="Avatar de Lucas Vasconcelos"
+          width={288}
+          height={288}
+          className="h-full w-full rounded-[1.15rem] object-cover"
+          priority
+        />
       </motion.div>
     </section>
   );

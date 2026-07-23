@@ -16,9 +16,11 @@ import {
 } from "@/schemas/contact-form-schema";
 
 type CopyStatus = "idle" | "success" | "error";
+type SubmitStatus = "idle" | "success";
 
 export function ContactSection() {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -39,9 +41,17 @@ export function ContactSection() {
     }
   };
 
-  const onSubmit = async (values: ContactFormValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 650));
-    console.info("Contato enviado:", values);
+  const onSubmit = (values: ContactFormValues) => {
+    const mailtoUrl = new URL(`mailto:${profile.email}`);
+
+    mailtoUrl.searchParams.set("subject", `[Portfólio] ${values.subject}`);
+    mailtoUrl.searchParams.set(
+      "body",
+      `Nome: ${values.name}\nE-mail: ${values.email}\n\n${values.message}`,
+    );
+
+    window.location.assign(mailtoUrl.toString());
+    setSubmitStatus("success");
     form.reset();
   };
 
@@ -69,11 +79,14 @@ export function ContactSection() {
                     id="name"
                     type="text"
                     autoComplete="name"
+                    maxLength={120}
+                    aria-invalid={Boolean(form.formState.errors.name)}
+                    aria-describedby={form.formState.errors.name ? "name-error" : undefined}
                     className="h-11 w-full rounded-xl border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     {...form.register("name")}
                   />
                   {form.formState.errors.name ? (
-                    <p className="text-xs text-danger-foreground">
+                    <p id="name-error" role="alert" className="text-xs text-danger-foreground">
                       {form.formState.errors.name.message}
                     </p>
                   ) : null}
@@ -86,11 +99,13 @@ export function ContactSection() {
                     id="email"
                     type="email"
                     autoComplete="email"
+                    aria-invalid={Boolean(form.formState.errors.email)}
+                    aria-describedby={form.formState.errors.email ? "email-error" : undefined}
                     className="h-11 w-full rounded-xl border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     {...form.register("email")}
                   />
                   {form.formState.errors.email ? (
-                    <p className="text-xs text-danger-foreground">
+                    <p id="email-error" role="alert" className="text-xs text-danger-foreground">
                       {form.formState.errors.email.message}
                     </p>
                   ) : null}
@@ -102,13 +117,16 @@ export function ContactSection() {
                   Assunto
                 </label>
                 <input
-                  id="subject"
-                  type="text"
+                    id="subject"
+                    type="text"
+                    maxLength={160}
+                    aria-invalid={Boolean(form.formState.errors.subject)}
+                    aria-describedby={form.formState.errors.subject ? "subject-error" : undefined}
                   className="h-11 w-full rounded-xl border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   {...form.register("subject")}
                 />
                 {form.formState.errors.subject ? (
-                  <p className="text-xs text-danger-foreground">
+                    <p id="subject-error" role="alert" className="text-xs text-danger-foreground">
                     {form.formState.errors.subject.message}
                   </p>
                 ) : null}
@@ -121,11 +139,14 @@ export function ContactSection() {
                 <textarea
                   id="message"
                   rows={6}
+                  maxLength={2_000}
+                  aria-invalid={Boolean(form.formState.errors.message)}
+                  aria-describedby={form.formState.errors.message ? "message-error" : undefined}
                   className="w-full resize-y rounded-xl border bg-background px-3 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   {...form.register("message")}
                 />
                 {form.formState.errors.message ? (
-                  <p className="text-xs text-danger-foreground">
+                    <p id="message-error" role="alert" className="text-xs text-danger-foreground">
                     {form.formState.errors.message.message}
                   </p>
                 ) : null}
@@ -135,8 +156,10 @@ export function ContactSection() {
                 <Button type="submit" disabled={form.formState.isSubmitting}>
                   {form.formState.isSubmitting ? "Enviando..." : "Enviar mensagem"}
                 </Button>
-                {form.formState.isSubmitSuccessful ? (
-                  <Badge variant="success">Mensagem validada e enviada com sucesso.</Badge>
+                {submitStatus === "success" ? (
+                  <Badge variant="success" role="status">
+                    Seu aplicativo de e-mail será aberto com a mensagem preenchida.
+                  </Badge>
                 ) : null}
               </div>
             </form>
@@ -180,10 +203,10 @@ export function ContactSection() {
               Copiar e-mail
             </Button>
             {copyStatus === "success" ? (
-              <p className="text-xs text-success-foreground">E-mail copiado.</p>
+              <p className="text-xs text-success-foreground" role="status">E-mail copiado.</p>
             ) : null}
             {copyStatus === "error" ? (
-              <p className="text-xs text-danger-foreground">
+              <p className="text-xs text-danger-foreground" role="alert">
                 Não foi possível copiar agora. Use: {profile.email}
               </p>
             ) : null}

@@ -12,26 +12,35 @@ export function CredentialsSection() {
       <div className="space-y-8">
         <SectionHeading
           eyebrow="Certificações"
-          title="Formação contínua e validação técnica"
-          description="Certificações voltadas a engenharia moderna, arquitetura de software e práticas de entrega de alto desempenho."
+          title="Formação contínua e base técnica"
+          description="Certificações voltadas a fundamentos de cloud computing, suporte técnico e boas práticas de desenvolvimento."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {certifications.map((certification) => (
             <Card key={certification.name}>
-              <CardHeader className="space-y-3">
+              <CardHeader className="space-y-3 pb-4">
                 <Badge variant="neutral" className="w-fit">
                   {certification.date}
                 </Badge>
                 <CardTitle className="text-base">{certification.name}</CardTitle>
                 <p className="text-sm text-muted-foreground">{certification.institution}</p>
+                {certification.credencial && (
+                  <p className="text-sm text-muted-foreground">
+                    Credencial: {certification.credencial}
+                  </p>
+                )}
               </CardHeader>
               <CardContent>
-                <Button asChild size="sm" variant="secondary">
-                  <a href={certification.certificateUrl}>
-                    Ver certificado
-                    <ArrowUpRight size={15} />
-                  </a>
-                </Button>
+                {certification.certificateUrl ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <a href={certification.certificateUrl} target="_blank" rel="noreferrer">
+                      Exibir credencial
+                      <ArrowUpRight size={15} />
+                    </a>
+                  </Button>
+                ) : (
+                  <p className="text-sm text-muted-foreground">Credencial em breve.</p>
+                )}
               </CardContent>
             </Card>
           ))}
@@ -46,8 +55,7 @@ export function CredentialsSection() {
             </p>
             <h3 className="text-xl font-semibold tracking-tight">Base acadêmica</h3>
             <p className="text-sm leading-6 text-muted-foreground">
-              Percurso estruturado para fortalecer fundamentos e visão estratégica
-              em tecnologia.
+              Formação em andamento, com foco em fundamentos de desenvolvimento e arquitetura de software.
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -73,8 +81,7 @@ export function CredentialsSection() {
               Hard Skills e Soft Skills
             </h3>
             <p className="text-sm leading-6 text-muted-foreground">
-              Conjunto de competências técnicas e comportamentais para entrega de
-              soluções completas.
+              Conjunto de competências técnicas e comportamentais construídas ao longo das experiências profissionais e projetos.
             </p>
           </CardHeader>
           <CardContent className="grid gap-5 md:grid-cols-2">
