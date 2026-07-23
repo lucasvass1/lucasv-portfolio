@@ -1,6 +1,6 @@
 # Portfólio Profissional — Lucas Vasconcelos
 
-Projeto de portfólio profissional desenvolvido com foco em design, performance, acessibilidade e manutenção.
+Projeto de portfólio profissional.
 
 ## Stack base
 
