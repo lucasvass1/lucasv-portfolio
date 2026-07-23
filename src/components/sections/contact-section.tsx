@@ -16,11 +16,12 @@ import {
 } from "@/schemas/contact-form-schema";
 
 type CopyStatus = "idle" | "success" | "error";
-type SubmitStatus = "idle" | "success";
+type SubmitStatus = "idle" | "success" | "error";
 
 export function ContactSection() {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [submitError, setSubmitError] = useState<string>("");
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -41,18 +42,33 @@ export function ContactSection() {
     }
   };
 
-  const onSubmit = (values: ContactFormValues) => {
-    const mailtoUrl = new URL(`mailto:${profile.email}`);
+  const onSubmit = async (values: ContactFormValues) => {
+    setSubmitStatus("idle");
+    setSubmitError("");
 
-    mailtoUrl.searchParams.set("subject", `[Portfólio] ${values.subject}`);
-    mailtoUrl.searchParams.set(
-      "body",
-      `Nome: ${values.name}\nE-mail: ${values.email}\n\n${values.message}`,
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
 
-    window.location.assign(mailtoUrl.toString());
-    setSubmitStatus("success");
-    form.reset();
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Erro ao enviar mensagem.");
+      }
+
+      setSubmitStatus("success");
+      form.reset();
+    } catch (error) {
+      setSubmitStatus("error");
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Erro ao enviar mensagem. Tente novamente.",
+      );
+    }
   };
 
   return (
@@ -158,7 +174,12 @@ export function ContactSection() {
                 </Button>
                 {submitStatus === "success" ? (
                   <Badge variant="success" role="status">
-                    Seu aplicativo de e-mail será aberto com a mensagem preenchida.
+                    Mensagem enviada! Retornarei em breve.
+                  </Badge>
+                ) : null}
+                {submitStatus === "error" ? (
+                  <Badge variant="danger" role="alert">
+                    {submitError || "Erro ao enviar. Tente novamente."}
                   </Badge>
                 ) : null}
               </div>
