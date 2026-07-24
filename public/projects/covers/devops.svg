@@ -1,0 +1,104 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b0d13"/>
+      <stop offset="1" stop-color="#07090d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(880 120) scale(560)">
+      <stop offset="0" stop-color="#8B5CF6" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 470) scale(420)">
+      <stop offset="0" stop-color="#6D28D9" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6D28D9" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.4" cy="1.4" r="1.4" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+    <linearGradient id="top1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C4B5FD"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="left1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="right1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#4C1D95"/>
+    </linearGradient>
+    <filter id="blurSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="blurWide" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <circle cx="980" cy="60" r="480" fill="none" stroke="#8B5CF6" stroke-opacity="0.10" stroke-width="90" stroke-dasharray="1400 620"/>
+
+  <ellipse cx="430" cy="530" rx="360" ry="34" fill="#000000" fill-opacity="0.35" filter="url(#blurWide)"/>
+
+  <g stroke="#C4B5FD" stroke-opacity="0.55" stroke-width="1.5">
+    <line x1="150" y1="205" x2="1050" y2="205"/>
+  </g>
+  <g fill="#A78BFA">
+    <circle cx="150" cy="205" r="5" fill-opacity="0.85"/>
+    <circle cx="330" cy="205" r="5" fill-opacity="0.85"/>
+    <circle cx="510" cy="205" r="8" fill="#EDE9FE"/>
+    <circle cx="510" cy="205" r="16" fill="#C4B5FD" fill-opacity="0.35" filter="url(#blurSoft)"/>
+    <circle cx="690" cy="205" r="5" fill-opacity="0.5"/>
+    <circle cx="870" cy="205" r="5" fill-opacity="0.5"/>
+    <circle cx="1050" cy="205" r="5" fill-opacity="0.5"/>
+  </g>
+  <g stroke="#A78BFA" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="2 6">
+    <line x1="330" y1="205" x2="330" y2="150"/>
+    <line x1="690" y1="205" x2="690" y2="150"/>
+  </g>
+
+  <g>
+    <polygon points="150,420 220,385 290,420 220,455" fill="url(#top1)"/>
+    <polygon points="150,420 220,455 220,520 150,485" fill="url(#left1)"/>
+    <polygon points="220,455 290,420 290,485 220,520" fill="url(#right1)"/>
+  </g>
+  <g>
+    <polygon points="290,420 360,385 430,420 360,455" fill="url(#top1)"/>
+    <polygon points="290,420 360,455 360,520 290,485" fill="url(#left1)"/>
+    <polygon points="360,455 430,420 430,485 360,520" fill="url(#right1)"/>
+  </g>
+  <g>
+    <polygon points="430,420 500,385 570,420 500,455" fill="url(#top1)"/>
+    <polygon points="430,420 500,455 500,520 430,485" fill="url(#left1)"/>
+    <polygon points="500,455 570,420 570,485 500,520" fill="url(#right1)"/>
+  </g>
+  <g>
+    <polygon points="290,340 360,305 430,340 360,375" fill="url(#top1)"/>
+    <polygon points="290,340 360,375 360,440 290,405" fill="url(#left1)"/>
+    <polygon points="360,375 430,340 430,405 360,440" fill="url(#right1)"/>
+  </g>
+
+  <g stroke="#0B0D13" stroke-opacity="0.35" stroke-width="1">
+    <polygon points="150,420 220,385 290,420 220,455" fill="none"/>
+    <polygon points="290,420 360,385 430,420 360,455" fill="none"/>
+    <polygon points="430,420 500,385 570,420 500,455" fill="none"/>
+    <polygon points="290,340 360,305 430,340 360,375" fill="none"/>
+  </g>
+
+  <g stroke="#A78BFA" stroke-opacity="0.5" stroke-width="1.5">
+    <path d="M700 470 C 780 470, 780 400, 860 400" fill="none"/>
+    <path d="M700 500 C 820 500, 820 340, 940 340" fill="none"/>
+  </g>
+  <g fill="#C4B5FD">
+    <circle cx="860" cy="400" r="4"/>
+    <circle cx="940" cy="340" r="4"/>
+  </g>
+  <g stroke="#8B5CF6" stroke-opacity="0.35" stroke-width="1.2">
+    <rect x="700" y="440" width="56" height="56" rx="10" fill="#8B5CF6" fill-opacity="0.06"/>
+    <rect x="700" y="470" width="56" height="56" rx="10" fill="#8B5CF6" fill-opacity="0.06"/>
+  </g>
+</svg>
