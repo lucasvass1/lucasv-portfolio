@@ -79,14 +79,17 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 mb-8 border-b border-border/60 bg-background/70 py-4 backdrop-blur-md">
       <div className="flex items-center justify-between gap-3">
-        <a href="#inicio" className="text-sm font-semibold tracking-wide uppercase">
+        <a
+          href="#inicio"
+          className="shrink-0 text-sm font-semibold tracking-wide uppercase whitespace-nowrap"
+        >
           Lucas Vasconcelos
         </a>
-        <nav aria-label="Navegação principal" className="hidden gap-1 md:flex">
+        <nav aria-label="Navegação principal" className="hidden gap-1 lg:flex">
           {navItems.map((item) => renderNavLink(item.href, item.label))}
         </nav>
         <div className="flex items-center gap-2">
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Button
               type="button"
               variant="secondary"
@@ -105,7 +108,7 @@ export function SiteHeader() {
         aria-hidden={!isMobileMenuOpen}
         inert={!isMobileMenuOpen}
         className={cn(
-          "grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 md:hidden",
+          "grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 lg:hidden",
           isMobileMenuOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         )}
       >

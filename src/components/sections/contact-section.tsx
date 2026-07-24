@@ -214,9 +214,9 @@ export function ContactSection() {
               </a>
             </Button>
             <Button asChild variant="secondary" className="w-full justify-start">
-              <a href={`mailto:${profile.email}`}>
-                <Mail size={15} />
-                {profile.email}
+              <a href={`mailto:${profile.email}`} className="min-w-0">
+                <Mail size={15} className="shrink-0" />
+                <span className="truncate">{profile.email}</span>
               </a>
             </Button>
             <Button type="button" variant="outline" className="w-full" onClick={handleCopyEmail}>
