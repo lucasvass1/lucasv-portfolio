@@ -4,10 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/ui/project-links";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { featuredProjects } from "@/data/portfolio-content";
+import { getFeaturedProjects } from "@/lib/projects";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
 
-export function FeaturedProjectsSection() {
+export async function FeaturedProjectsSection() {
+  const projects = await getFeaturedProjects();
+
+  if (!projects.length) return null;
+
   return (
     <section id="projetos" className="space-y-8 py-16">
       <SectionHeading
@@ -17,7 +21,7 @@ export function FeaturedProjectsSection() {
       />
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {featuredProjects.map((project) => (
+        {projects.map((project) => (
           <Card
             key={project.name}
             className="group overflow-hidden border-border/80 transition hover:-translate-y-0.5 hover:border-accent/40"
