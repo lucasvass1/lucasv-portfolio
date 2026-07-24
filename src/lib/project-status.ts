@@ -1,4 +1,4 @@
-import type { ProjectStatus } from "@/data/portfolio-content";
+import type { ProjectStatus } from "@/types/project";
 
 export const statusVariantByProjectStatus: Record<
   ProjectStatus,
@@ -6,7 +6,6 @@ export const statusVariantByProjectStatus: Record<
 > = {
   "Em Produção": "success",
   "Em Desenvolvimento": "warning",
-  "Em Construção": "warning",
   Finalizado: "neutral",
   Arquivado: "danger",
 };

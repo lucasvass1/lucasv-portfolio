@@ -1,10 +1,10 @@
 import { ArrowUpRight, Code2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import type { PortfolioProject } from "@/data/portfolio-content";
+import type { PortfolioProjectView } from "@/types/portfolio-project";
 
 type ProjectLinksProps = {
-  project: Pick<PortfolioProject, "demoUrl" | "githubUrl">;
+  project: Pick<PortfolioProjectView, "demoUrl" | "githubUrl">;
 };
 
 function isExternalUrl(url: string) {

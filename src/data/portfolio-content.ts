@@ -28,38 +28,10 @@ export type TechnologyIcon =
   | "route"
   | "file-code";
 
-export type ProjectStatus =
-  | "Em Produção"
-  | "Em Desenvolvimento"
-  | "Em Construção"
-  | "Finalizado"
-  | "Arquivado";
-
-export type ProjectCategory =
-  | "Frontend"
-  | "Backend"
-  | "Full Stack"
-  | "DevOps"
-  | "Mobile"
-  | "Outros";
-
 type Technology = {
   name: string;
   description: string;
   icon: TechnologyIcon;
-};
-
-export type PortfolioProject = {
-  name: string;
-  description: string;
-  imageUrl: string;
-  technologies: string[];
-  status: ProjectStatus;
-  year: string;
-  category: ProjectCategory;
-  demoUrl: string;
-  githubUrl: string;
-  featured: boolean;
 };
 
 type Certification = {
@@ -240,115 +212,6 @@ items: [
   ],
   },
 ];
-
-export const allProjects: PortfolioProject[] = [
-  {
-    name: "SaaS Analytics Platform",
-    description:
-      "Plataforma full stack para acompanhamento de métricas de produto com dashboards em tempo real, autenticação e permissões por equipe.",
-    imageUrl: "/projects/saas-analytics.svg",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind"],
-    status: "Em Produção",
-    year: "2026",
-    category: "Full Stack",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    name: "DevOps Insight Hub",
-    description:
-      "Painel para monitoramento de pipelines e qualidade de deploy, com alertas e visualização histórica para times de engenharia.",
-    imageUrl: "/projects/devops-insight.svg",
-    technologies: ["React", "Node.js", "Docker", "GitHub Actions"],
-    status: "Em Desenvolvimento",
-    year: "2026",
-    category: "DevOps",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    name: "Finance Flow Manager",
-    description:
-      "Aplicação de gestão financeira com foco em UX, categorização inteligente de transações e metas com indicadores interativos.",
-    imageUrl: "/projects/finance-flow.svg",
-    technologies: ["Next.js", "React Hook Form", "Zod", "Framer Motion"],
-    status: "Finalizado",
-    year: "2025",
-    category: "Frontend",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    name: "API Gateway Commerce",
-    description:
-      "Gateway para integração de pagamentos, pedidos e estoque com observabilidade e segurança para operações de e-commerce.",
-    imageUrl: "/projects/api-gateway.svg",
-    technologies: ["NestJS", "TypeScript", "PostgreSQL", "Redis"],
-    status: "Em Produção",
-    year: "2025",
-    category: "Backend",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    name: "Mobile Habit Tracker",
-    description:
-      "Aplicativo de hábitos com gamificação, lembretes inteligentes e sincronização com backend para acompanhamento de evolução.",
-    imageUrl: "/projects/mobile-habit.svg",
-    technologies: ["React Native", "Expo", "TypeScript", "Firebase"],
-    status: "Em Construção",
-    year: "2026",
-    category: "Mobile",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    name: "Observability Starter Kit",
-    description:
-      "Template de observabilidade para microsserviços com logs estruturados, tracing e dashboards base para time de engenharia.",
-    imageUrl: "/projects/observability-kit.svg",
-    technologies: ["OpenTelemetry", "Grafana", "Docker", "Prometheus"],
-    status: "Finalizado",
-    year: "2024",
-    category: "Outros",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    name: "Career Match Portal",
-    description:
-      "Portal de vagas com matching por skills, onboarding de candidatos e trilha de comunicação com recrutadores.",
-    imageUrl: "/projects/career-match.svg",
-    technologies: ["Next.js", "TanStack Query", "Prisma", "PostgreSQL"],
-    status: "Em Desenvolvimento",
-    year: "2026",
-    category: "Full Stack",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    name: "Legacy Dashboard Revamp",
-    description:
-      "Modernização de dashboard legado com redesign de informação, migração gradual e melhoria de performance percebida.",
-    imageUrl: "/projects/legacy-revamp.svg",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Zod"],
-    status: "Arquivado",
-    year: "2023",
-    category: "Frontend",
-    demoUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-];
-
-export const featuredProjects = allProjects.filter((project) => project.featured);
 
 export const experiences = [
   {
