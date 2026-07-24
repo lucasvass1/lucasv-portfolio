@@ -33,7 +33,7 @@ export default async function AdminProjectsPage() {
 
       {error ? (
         <Card>
-          <CardContent className="py-8 text-center text-sm text-danger-foreground">
+          <CardContent className="py-8 text-center text-sm text-danger">
             Erro ao carregar os projetos. Tente recarregar a página.
           </CardContent>
         </Card>

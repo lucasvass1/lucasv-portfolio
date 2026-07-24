@@ -4,10 +4,15 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import { useMounted } from "@/lib/use-mounted";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const isDark = resolvedTheme !== "light";
+  const mounted = useMounted();
+
+  // Antes de montar, mantém o mesmo resultado do servidor (tema padrão)
+  // para não divergir do HTML renderizado no SSR e quebrar a hidratação.
+  const isDark = !mounted || resolvedTheme !== "light";
 
   return (
     <Button

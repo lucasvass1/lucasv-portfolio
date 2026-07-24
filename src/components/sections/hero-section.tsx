@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/portfolio-content";
+import { useMounted } from "@/lib/use-mounted";
 
 const heroActions = [
   { href: profile.githubUrl, label: "GitHub", icon: Code2, external: true },
@@ -17,7 +18,11 @@ const heroActions = [
 
 export function HeroSection() {
   const { resolvedTheme } = useTheme();
-  const avatarSrc = resolvedTheme === "light" ? "/Avatar 2.png" : "/Avatar.png";
+  const mounted = useMounted();
+
+  // Antes de montar, mantém o mesmo resultado do servidor (tema padrão)
+  // para não divergir do HTML renderizado no SSR e quebrar a hidratação.
+  const avatarSrc = mounted && resolvedTheme === "light" ? "/Avatar 2.png" : "/Avatar.png";
 
   return (
     <section
@@ -39,8 +44,7 @@ export function HeroSection() {
             Lucas Vasconcelos
           </h1>
           <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            Desenvolvedor Full Stack
-            Construindo aplicações web com React, Node.js e APIs REST, com experiência prática em Cloud (AWS/GCP), integração de sistemas e boas práticas de Clean Code.
+            Desenvolvedor Full Stack construindo aplicações web com React, Node.js e APIs REST, com experiência prática em Cloud (AWS/GCP), integração de sistemas e boas práticas de Clean Code.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

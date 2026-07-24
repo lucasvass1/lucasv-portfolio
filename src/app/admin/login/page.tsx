@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
               />
             </div>
             {error ? (
-              <p role="alert" className="text-xs text-danger-foreground">
+              <p role="alert" className="text-xs text-danger">
                 {error}
               </p>
             ) : null}

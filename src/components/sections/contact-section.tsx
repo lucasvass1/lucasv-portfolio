@@ -102,7 +102,7 @@ export function ContactSection() {
                     {...form.register("name")}
                   />
                   {form.formState.errors.name ? (
-                    <p id="name-error" role="alert" className="text-xs text-danger-foreground">
+                    <p id="name-error" role="alert" className="text-xs text-danger">
                       {form.formState.errors.name.message}
                     </p>
                   ) : null}
@@ -121,7 +121,7 @@ export function ContactSection() {
                     {...form.register("email")}
                   />
                   {form.formState.errors.email ? (
-                    <p id="email-error" role="alert" className="text-xs text-danger-foreground">
+                    <p id="email-error" role="alert" className="text-xs text-danger">
                       {form.formState.errors.email.message}
                     </p>
                   ) : null}
@@ -142,7 +142,7 @@ export function ContactSection() {
                   {...form.register("subject")}
                 />
                 {form.formState.errors.subject ? (
-                    <p id="subject-error" role="alert" className="text-xs text-danger-foreground">
+                    <p id="subject-error" role="alert" className="text-xs text-danger">
                     {form.formState.errors.subject.message}
                   </p>
                 ) : null}
@@ -162,7 +162,7 @@ export function ContactSection() {
                   {...form.register("message")}
                 />
                 {form.formState.errors.message ? (
-                    <p id="message-error" role="alert" className="text-xs text-danger-foreground">
+                    <p id="message-error" role="alert" className="text-xs text-danger">
                     {form.formState.errors.message.message}
                   </p>
                 ) : null}
@@ -224,10 +224,10 @@ export function ContactSection() {
               Copiar e-mail
             </Button>
             {copyStatus === "success" ? (
-              <p className="text-xs text-success-foreground" role="status">E-mail copiado.</p>
+              <p className="text-xs text-success" role="status">E-mail copiado.</p>
             ) : null}
             {copyStatus === "error" ? (
-              <p className="text-xs text-danger-foreground" role="alert">
+              <p className="text-xs text-danger" role="alert">
                 Não foi possível copiar agora. Use: {profile.email}
               </p>
             ) : null}

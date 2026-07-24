@@ -147,7 +147,7 @@ export function ProjectForm({ project }: { project?: Project }) {
               {...form.register("title")}
             />
             {form.formState.errors.title ? (
-              <p role="alert" className="text-xs text-danger-foreground">
+              <p role="alert" className="text-xs text-danger">
                 {form.formState.errors.title.message}
               </p>
             ) : null}
@@ -164,7 +164,7 @@ export function ProjectForm({ project }: { project?: Project }) {
               {...form.register("description")}
             />
             {form.formState.errors.description ? (
-              <p role="alert" className="text-xs text-danger-foreground">
+              <p role="alert" className="text-xs text-danger">
                 {form.formState.errors.description.message}
               </p>
             ) : null}
@@ -218,7 +218,7 @@ export function ProjectForm({ project }: { project?: Project }) {
               {...form.register("technologies")}
             />
             {form.formState.errors.technologies ? (
-              <p role="alert" className="text-xs text-danger-foreground">
+              <p role="alert" className="text-xs text-danger">
                 {form.formState.errors.technologies.message}
               </p>
             ) : null}
@@ -237,7 +237,7 @@ export function ProjectForm({ project }: { project?: Project }) {
                 {...form.register("project_url")}
               />
               {form.formState.errors.project_url ? (
-                <p role="alert" className="text-xs text-danger-foreground">
+                <p role="alert" className="text-xs text-danger">
                   {form.formState.errors.project_url.message}
                 </p>
               ) : null}
@@ -255,7 +255,7 @@ export function ProjectForm({ project }: { project?: Project }) {
                 {...form.register("github_url")}
               />
               {form.formState.errors.github_url ? (
-                <p role="alert" className="text-xs text-danger-foreground">
+                <p role="alert" className="text-xs text-danger">
                   {form.formState.errors.github_url.message}
                 </p>
               ) : null}
@@ -274,7 +274,7 @@ export function ProjectForm({ project }: { project?: Project }) {
                 {...form.register("year")}
               />
               {form.formState.errors.year ? (
-                <p role="alert" className="text-xs text-danger-foreground">
+                <p role="alert" className="text-xs text-danger">
                   {form.formState.errors.year.message}
                 </p>
               ) : null}

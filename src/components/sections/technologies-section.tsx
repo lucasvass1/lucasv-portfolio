@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import type { ComponentType } from "react";
 
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
@@ -80,9 +79,6 @@ export function TechnologiesSection() {
                     <div className="mb-1 flex items-center gap-2">
                       <Icon className="text-accent" size={15} />
                       <p className="text-sm font-semibold">{item.name}</p>
-                      <Badge className="ml-auto" variant="neutral">
-                        foco
-                      </Badge>
                     </div>
                     <p className="text-xs leading-5 text-muted-foreground">
                       {item.description}
