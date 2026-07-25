@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { BriefcaseBusiness, Code2, Mail, FileDown } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import { EASE_OUT } from "@/components/ui/reveal";
 import { profile } from "@/data/portfolio-content";
 import { useMounted } from "@/lib/use-mounted";
 
@@ -16,9 +17,20 @@ const heroActions = [
   { href: "#contato", label: "Contato", icon: Mail },
 ];
 
+const containerVariants: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
+};
+
 export function HeroSection() {
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
+  const shouldReduceMotion = useReducedMotion();
 
   // Antes de montar, mantém o mesmo resultado do servidor (tema padrão)
   // para não divergir do HTML renderizado no SSR e quebrar a hidratação.
@@ -30,24 +42,32 @@ export function HeroSection() {
       className="grid min-h-[76vh] items-center gap-10 border-b py-20 md:grid-cols-[1.5fr_1fr]"
     >
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.7, ease: [0.21, 1, 0.32, 1] }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
         className="space-y-8"
       >
-        <p className="text-sm font-semibold tracking-[0.16em] text-muted-foreground uppercase">
+        <motion.p
+          variants={itemVariants}
+          className="text-sm font-semibold tracking-[0.16em] text-muted-foreground uppercase"
+        >
           Full Stack Developer
-        </p>
+        </motion.p>
         <div className="space-y-4">
-          <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl">
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl"
+          >
             Lucas Vasconcelos
-          </h1>
-          <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
+            className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
+          >
             Desenvolvedor Full Stack construindo aplicações web com React, Node.js e APIs REST, com experiência prática em Cloud (AWS/GCP), integração de sistemas e boas práticas de Clean Code.
-          </p>
+          </motion.p>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
           {heroActions.map(({ href, icon: Icon, label, external }, index) => (
             <Button
               key={label}
@@ -66,23 +86,36 @@ export function HeroSection() {
               </a>
             </Button>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6, ease: [0.21, 1, 0.32, 1] }}
-        className="mx-auto aspect-square w-full max-w-72 rounded-3xl border bg-gradient-to-b from-card to-muted p-2"
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.2 }}
+        className="relative mx-auto aspect-square w-full max-w-72"
       >
-        <Image
-          src={avatarSrc}
-          alt="Avatar de Lucas Vasconcelos"
-          width={288}
-          height={288}
-          className="h-full w-full rounded-[1.15rem] object-cover"
-          priority
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 rounded-full bg-accent/25 blur-3xl"
         />
+        <motion.div
+          animate={shouldReduceMotion ? undefined : { y: [0, -10, 0] }}
+          transition={
+            shouldReduceMotion
+              ? undefined
+              : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+          }
+          className="h-full w-full rounded-3xl border bg-gradient-to-b from-card to-muted p-2"
+        >
+          <Image
+            src={avatarSrc}
+            alt="Avatar de Lucas Vasconcelos"
+            width={288}
+            height={288}
+            className="h-full w-full rounded-[1.15rem] object-cover"
+            priority
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/ui/project-links";
+import { Reveal, StaggerGrid } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getFeaturedProjects } from "@/lib/projects";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
@@ -14,24 +15,26 @@ export async function FeaturedProjectsSection() {
 
   return (
     <section id="projetos" className="space-y-8 py-16">
-      <SectionHeading
-        eyebrow="Projetos em Destaque"
-        title="Projetos selecionados para demonstrar profundidade técnica"
-        description="Cada projeto prioriza arquitetura escalável, decisões orientadas a produto e execução com foco em performance e experiência do usuário."
-      />
+      <Reveal>
+        <SectionHeading
+          eyebrow="Projetos em Destaque"
+          title="Projetos selecionados para demonstrar profundidade técnica"
+          description="Cada projeto prioriza arquitetura escalável, decisões orientadas a produto e execução com foco em performance e experiência do usuário."
+        />
+      </Reveal>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <StaggerGrid className="grid gap-6 lg:grid-cols-3">
         {projects.map((project) => (
           <Card
             key={project.name}
             className="group overflow-hidden border-border/80 transition hover:-translate-y-0.5 hover:border-accent/40"
           >
-            <div className="relative h-40 border-b">
+            <div className="relative h-40 overflow-hidden border-b">
               <Image
                 src={project.imageUrl}
                 alt={`Imagem do projeto ${project.name}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
                 sizes="(max-width: 1024px) 100vw, 33vw"
               />
             </div>
@@ -62,7 +65,7 @@ export async function FeaturedProjectsSection() {
             </CardContent>
           </Card>
         ))}
-      </div>
+      </StaggerGrid>
     </section>
   );
 }

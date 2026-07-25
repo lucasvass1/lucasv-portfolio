@@ -1,18 +1,21 @@
 import { experiences } from "@/data/portfolio-content";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Reveal, StaggerGrid } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function ExperienceSection() {
   return (
     <section id="experiencia" className="space-y-8 py-16">
-      <SectionHeading
-        eyebrow="Experiência Profissional"
-        title="Trajetória de aprendizado prático"
-        description="Experiências que combinam desenvolvimento full stack, suporte técnico e contato direto com sistemas em produção."
-      />
+      <Reveal>
+        <SectionHeading
+          eyebrow="Experiência Profissional"
+          title="Trajetória de aprendizado prático"
+          description="Experiências que combinam desenvolvimento full stack, suporte técnico e contato direto com sistemas em produção."
+        />
+      </Reveal>
 
-      <div className="relative space-y-6 before:absolute before:top-0 before:bottom-0 before:left-2 before:w-px before:bg-border md:before:left-4">
+      <StaggerGrid className="relative space-y-6 before:absolute before:top-0 before:bottom-0 before:left-2 before:w-px before:bg-border md:before:left-4">
         {experiences.map((experience) => (
           <Card key={`${experience.company}-${experience.period}`} className="relative ml-6 md:ml-10">
             <span className="absolute top-7 -left-8 h-4 w-4 rounded-full border bg-accent md:-left-10" />
@@ -60,7 +63,7 @@ export function ExperienceSection() {
             </CardContent>
           </Card>
         ))}
-      </div>
+      </StaggerGrid>
     </section>
   );
 }

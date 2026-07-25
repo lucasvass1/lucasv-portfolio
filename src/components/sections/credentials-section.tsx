@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Reveal, StaggerGrid } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { certifications, education, skills } from "@/data/portfolio-content";
 
@@ -10,12 +11,14 @@ export function CredentialsSection() {
   return (
     <section id="credenciais" className="space-y-12 py-16">
       <div className="space-y-8">
-        <SectionHeading
-          eyebrow="Certificações"
-          title="Formação contínua e base técnica"
-          description="Certificações voltadas a fundamentos de cloud computing, suporte técnico e boas práticas de desenvolvimento."
-        />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Certificações"
+            title="Formação contínua e base técnica"
+            description="Certificações voltadas a fundamentos de cloud computing, suporte técnico e boas práticas de desenvolvimento."
+          />
+        </Reveal>
+        <StaggerGrid className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {certifications.map((certification) => (
             <Card key={certification.name}>
               <CardHeader className="space-y-3 pb-4">
@@ -44,10 +47,10 @@ export function CredentialsSection() {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </StaggerGrid>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <StaggerGrid className="grid gap-6 lg:grid-cols-2">
         <Card id="formacao">
           <CardHeader>
             <p className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
@@ -107,7 +110,7 @@ export function CredentialsSection() {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </StaggerGrid>
     </section>
   );
 }

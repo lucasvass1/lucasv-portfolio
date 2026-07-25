@@ -1,9 +1,11 @@
 "use client";
 
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { EASE_OUT } from "@/components/ui/reveal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +25,12 @@ const sectionIds = navItems.map((item) => item.href.slice(1));
 export function SiteHeader() {
   const [activeHref, setActiveHref] = useState("#inicio");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scrollProgress = useSpring(scrollYProgress, {
+    stiffness: 260,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,25 +67,46 @@ export function SiteHeader() {
     return () => observer.disconnect();
   }, []);
 
-  const renderNavLink = (href: string, label: string) => (
-    <a
-      key={href}
-      href={href}
-      className={cn(
-        "rounded-full px-3 py-2 text-sm transition",
-        activeHref === href
-          ? "bg-accent text-accent-foreground"
-          : "text-muted-foreground hover:bg-muted hover:text-foreground",
-      )}
-      onClick={() => setIsMobileMenuOpen(false)}
-      aria-current={activeHref === href ? "location" : undefined}
-    >
-      {label}
-    </a>
-  );
+  const renderNavLink = (href: string, label: string, pillId: string) => {
+    const isActive = activeHref === href;
+
+    return (
+      <a
+        key={href}
+        href={href}
+        className={cn(
+          "relative rounded-full px-3 py-2 text-sm transition-colors",
+          isActive
+            ? "text-accent-foreground"
+            : "text-muted-foreground hover:bg-muted hover:text-foreground",
+        )}
+        onClick={() => setIsMobileMenuOpen(false)}
+        aria-current={isActive ? "location" : undefined}
+      >
+        {isActive ? (
+          <motion.span
+            layoutId={pillId}
+            className="absolute inset-0 -z-10 rounded-full bg-accent"
+            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+          />
+        ) : null}
+        <span className="relative">{label}</span>
+      </a>
+    );
+  };
 
   return (
-    <header className="sticky top-0 z-20 mb-8 border-b border-border/60 bg-background/70 py-4 backdrop-blur-md">
+    <motion.header
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASE_OUT }}
+      className="sticky top-0 z-20 mb-8 border-b border-border/60 bg-background/70 py-4 backdrop-blur-md"
+    >
+      <motion.div
+        aria-hidden
+        className="fixed inset-x-0 top-0 z-30 h-[3px] origin-left bg-accent"
+        style={{ scaleX: scrollProgress }}
+      />
       <div className="flex items-center justify-between gap-3">
         <a
           href="#inicio"
@@ -86,7 +115,7 @@ export function SiteHeader() {
           Lucas Vasconcelos
         </a>
         <nav aria-label="Navegação principal" className="hidden gap-1 lg:flex">
-          {navItems.map((item) => renderNavLink(item.href, item.label))}
+          {navItems.map((item) => renderNavLink(item.href, item.label, "nav-pill-desktop"))}
         </nav>
         <div className="flex items-center gap-2">
           <div className="lg:hidden">
@@ -114,10 +143,10 @@ export function SiteHeader() {
       >
         <div className="min-h-0">
           <div className="flex flex-wrap gap-2 border-t pt-4">
-            {navItems.map((item) => renderNavLink(item.href, item.label))}
+            {navItems.map((item) => renderNavLink(item.href, item.label, "nav-pill-mobile"))}
           </div>
         </div>
       </nav>
-    </header>
+    </motion.header>
   );
 }

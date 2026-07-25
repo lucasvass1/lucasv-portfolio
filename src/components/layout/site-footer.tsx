@@ -1,6 +1,7 @@
 import { ArrowUp, BriefcaseBusiness, Code2, Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { profile } from "@/data/portfolio-content";
 
 const quickLinks = [
@@ -13,7 +14,7 @@ const quickLinks = [
 export function SiteFooter() {
   return (
     <footer className="mt-6 border-t border-border/70 py-10">
-      <div className="grid gap-6 md:grid-cols-[1.2fr_1fr_1fr] md:items-start">
+      <Reveal amount={0.2} className="grid gap-6 md:grid-cols-[1.2fr_1fr_1fr] md:items-start">
         <div className="space-y-2">
           <p className="text-sm font-semibold tracking-wide uppercase">{profile.name}</p>
           <p className="text-sm text-muted-foreground">
@@ -63,11 +64,11 @@ export function SiteFooter() {
             </Button>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       <div className="mt-8 flex flex-col gap-3 border-t border-border/70 pt-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} {profile.name}. Todos os direitos reservados.</p>
-        <Button asChild size="sm" variant="outline">
+        <Button asChild size="sm" variant="outline" className="hover:-translate-y-0.5">
           <a href="#inicio">
             <ArrowUp size={14} />
             Voltar ao topo

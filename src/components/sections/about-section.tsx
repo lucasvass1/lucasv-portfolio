@@ -7,18 +7,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Reveal, StaggerGrid } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function AboutSection() {
   return (
     <section id="sobre" className="space-y-8 py-16">
-      <SectionHeading
-        eyebrow="Sobre Mim"
-        title="Em formação técnica, com experiência prática desde o primeiro estágio"
-        description="Combino estudo contínuo em Engenharia de Software com experiência real em projetos de desenvolvimento web, unindo teoria e prática desde cedo na carreira."
-      />
+      <Reveal>
+        <SectionHeading
+          eyebrow="Sobre Mim"
+          title="Em formação técnica, com experiência prática desde o primeiro estágio"
+          description="Combino estudo contínuo em Engenharia de Software com experiência real em projetos de desenvolvimento web, unindo teoria e prática desde cedo na carreira."
+        />
+      </Reveal>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <StaggerGrid className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
             <Badge className="w-fit" variant="neutral">
@@ -52,7 +55,7 @@ export function AboutSection() {
             </ul>
           </CardContent>
         </Card>
-      </div>
+      </StaggerGrid>
     </section>
   );
 }
