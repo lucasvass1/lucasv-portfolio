@@ -12,8 +12,7 @@ import { TechnologiesSection } from "@/components/sections/technologies-section"
 
 export default function Home() {
   return (
-    <SiteShell>
-      <SiteHeader />
+    <SiteShell header={<SiteHeader />}>
       <main>
         <HeroSection />
         <AboutSection />
