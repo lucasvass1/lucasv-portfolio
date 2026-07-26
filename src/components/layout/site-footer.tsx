@@ -43,20 +43,20 @@ export function SiteFooter() {
           <p className="mb-3 text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
             Redes
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Button asChild size="sm" variant="secondary">
+          <div className="flex flex-col gap-2">
+            <Button asChild size="sm" variant="secondary" className="w-full justify-start">
               <a href={profile.githubUrl} target="_blank" rel="noreferrer">
                 <Code2 size={14} />
                 GitHub
               </a>
             </Button>
-            <Button asChild size="sm" variant="secondary">
+            <Button asChild size="sm" variant="secondary" className="w-full justify-start">
               <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
                 <BriefcaseBusiness size={14} />
                 LinkedIn
               </a>
             </Button>
-            <Button asChild size="sm" variant="secondary">
+            <Button asChild size="sm" variant="secondary" className="w-full justify-start">
               <a href={`mailto:${profile.email}`}>
                 <Mail size={14} />
                 E-mail

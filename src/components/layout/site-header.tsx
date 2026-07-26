@@ -172,22 +172,35 @@ export function SiteHeader() {
       </motion.header>
       <AnimatePresence>
         {isMobileMenuOpen ? (
-          <motion.nav
-            aria-label="Navegação mobile"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: EASE_OUT }}
-            style={{ top: headerHeight }}
-            className="fixed inset-x-0 bottom-0 z-10 overflow-y-auto bg-background lg:hidden"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <div className="mx-auto flex min-h-full w-full max-w-xs flex-col justify-center gap-2 px-6 py-10">
-              {navItems.map((item) =>
-                renderNavLink(item.href, item.label, "nav-pill-mobile", true),
-              )}
-            </div>
-          </motion.nav>
+          <>
+            <motion.div
+              key="mobile-menu-backdrop"
+              aria-hidden
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: EASE_OUT }}
+              style={{ top: headerHeight }}
+              className="fixed inset-x-0 bottom-0 z-10 bg-black/50 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <motion.nav
+              key="mobile-menu-drawer"
+              aria-label="Navegação mobile"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.28, ease: EASE_OUT }}
+              style={{ top: headerHeight }}
+              className="fixed right-0 bottom-0 z-10 w-4/5 max-w-sm overflow-y-auto border-l bg-background lg:hidden"
+            >
+              <div className="flex min-h-full w-full flex-col justify-center gap-2 px-6 py-10">
+                {navItems.map((item) =>
+                  renderNavLink(item.href, item.label, "nav-pill-mobile", true),
+                )}
+              </div>
+            </motion.nav>
+          </>
         ) : null}
       </AnimatePresence>
     </>

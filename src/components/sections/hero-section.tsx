@@ -67,13 +67,16 @@ export function HeroSection() {
             Desenvolvedor Full Stack construindo aplicações web com React, Node.js e APIs REST, com experiência prática em Cloud (AWS/GCP), integração de sistemas e boas práticas de Clean Code.
           </motion.p>
         </div>
-        <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-2 gap-3 lg:flex lg:flex-wrap"
+        >
           {heroActions.map(({ href, icon: Icon, label, external }, index) => (
             <Button
               key={label}
               asChild
               variant={index === 0 ? "default" : "secondary"}
-              className="hover:-translate-y-0.5"
+              className="w-full hover:-translate-y-0.5 lg:w-auto"
             >
               <a
                 href={href}
