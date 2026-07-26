@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/ui/project-links";
@@ -29,13 +27,13 @@ export async function FeaturedProjectsSection() {
             key={project.name}
             className="group overflow-hidden border-border/80 transition hover:-translate-y-0.5 hover:border-accent/40"
           >
-            <div className="relative h-40 overflow-hidden border-b">
-              <Image
+            <div className="overflow-hidden border-b">
+              {/* eslint-disable-next-line @next/next/no-img-element -- dimensões reais desconhecidas; precisa da altura natural da imagem */}
+              <img
                 src={project.imageUrl}
                 alt={`Imagem do projeto ${project.name}`}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-                sizes="(max-width: 1024px) 100vw, 33vw"
+                loading="lazy"
+                className="block w-full transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <CardHeader className="space-y-3">

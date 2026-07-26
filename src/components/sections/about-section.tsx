@@ -21,8 +21,8 @@ export function AboutSection() {
         />
       </Reveal>
 
-      <StaggerGrid className="grid gap-6 md:grid-cols-2">
-        <Card>
+      <StaggerGrid className="grid items-stretch gap-6 md:grid-cols-2">
+        <Card className="h-full">
           <CardHeader>
             <Badge className="w-fit" variant="neutral">
               Trajetória
@@ -36,7 +36,7 @@ export function AboutSection() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="h-full">
           <CardHeader>
             <Badge className="w-fit" variant="success">
               Diferenciais

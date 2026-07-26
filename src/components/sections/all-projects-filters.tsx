@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Search } from "lucide-react";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -131,13 +130,13 @@ export function AllProjectsFilters({ projects }: Props) {
                 transition={{ duration: 0.3, ease: EASE_OUT }}
               >
                 <Card className="group h-full overflow-hidden">
-                  <div className="relative h-52 overflow-hidden border-b">
-                    <Image
+                  <div className="overflow-hidden border-b">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- dimensões reais desconhecidas; precisa da altura natural da imagem */}
+                    <img
                       src={project.imageUrl}
                       alt={`Imagem do projeto ${project.name}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      loading="lazy"
+                      className="block w-full transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                   <CardHeader className="space-y-3">
