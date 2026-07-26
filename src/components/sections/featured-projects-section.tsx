@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/ui/project-links";
+import { ProjectThumbnail } from "@/components/ui/project-thumbnail";
 import { Reveal, StaggerGrid } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getFeaturedProjects } from "@/lib/projects";
@@ -27,15 +28,11 @@ export async function FeaturedProjectsSection() {
             key={project.name}
             className="group overflow-hidden border-border/80 transition hover:-translate-y-0.5 hover:border-accent/40"
           >
-            <div className="overflow-hidden border-b">
-              {/* eslint-disable-next-line @next/next/no-img-element -- dimensões reais desconhecidas; precisa da altura natural da imagem */}
-              <img
-                src={project.imageUrl}
-                alt={`Imagem do projeto ${project.name}`}
-                loading="lazy"
-                className="block w-full transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
+            <ProjectThumbnail
+              src={project.imageUrl}
+              alt={`Imagem do projeto ${project.name}`}
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
             <CardHeader className="space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <CardTitle className="text-base">{project.name}</CardTitle>

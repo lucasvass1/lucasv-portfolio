@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectLinks } from "@/components/ui/project-links";
+import { ProjectThumbnail } from "@/components/ui/project-thumbnail";
 import { EASE_OUT, Reveal } from "@/components/ui/reveal";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
 import type { PortfolioProjectView, ProjectCategory } from "@/types/portfolio-project";
@@ -130,15 +131,11 @@ export function AllProjectsFilters({ projects }: Props) {
                 transition={{ duration: 0.3, ease: EASE_OUT }}
               >
                 <Card className="group h-full overflow-hidden">
-                  <div className="overflow-hidden border-b">
-                    {/* eslint-disable-next-line @next/next/no-img-element -- dimensões reais desconhecidas; precisa da altura natural da imagem */}
-                    <img
-                      src={project.imageUrl}
-                      alt={`Imagem do projeto ${project.name}`}
-                      loading="lazy"
-                      className="block w-full transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
+                  <ProjectThumbnail
+                    src={project.imageUrl}
+                    alt={`Imagem do projeto ${project.name}`}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                   <CardHeader className="space-y-3">
                     <div className="flex items-start justify-between gap-3">
                       <CardTitle className="text-base">{project.name}</CardTitle>
