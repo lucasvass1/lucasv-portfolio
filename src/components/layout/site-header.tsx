@@ -180,6 +180,7 @@ export function SiteHeader() {
             transition={{ duration: 0.2, ease: EASE_OUT }}
             style={{ top: headerHeight }}
             className="fixed inset-x-0 bottom-0 z-10 overflow-y-auto bg-background lg:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             <div className="mx-auto flex min-h-full w-full max-w-xs flex-col justify-center gap-2 px-6 py-10">
               {navItems.map((item) =>
