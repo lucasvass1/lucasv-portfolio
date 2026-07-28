@@ -11,6 +11,7 @@ import { ProjectLinks } from "@/components/ui/project-links";
 import { ProjectThumbnail } from "@/components/ui/project-thumbnail";
 import { EASE_OUT, Reveal } from "@/components/ui/reveal";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
+import { getTechBadgeClass } from "@/lib/tech-colors";
 import type { PortfolioProjectView, ProjectCategory } from "@/types/portfolio-project";
 
 const categoryOptions: Array<"Todos" | ProjectCategory> = [
@@ -135,6 +136,8 @@ export function AllProjectsFilters({ projects }: Props) {
                     src={project.imageUrl}
                     alt={`Imagem do projeto ${project.name}`}
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    demoUrl={project.demoUrl}
+                    githubUrl={project.githubUrl}
                   />
                   <CardHeader className="space-y-3">
                     <div className="flex items-start justify-between gap-3">
@@ -150,7 +153,7 @@ export function AllProjectsFilters({ projects }: Props) {
                   <CardContent className="space-y-4">
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="neutral">
+                        <Badge key={tech} variant="neutral" className={getTechBadgeClass(tech)}>
                           {tech}
                         </Badge>
                       ))}

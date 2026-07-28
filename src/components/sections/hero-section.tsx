@@ -4,6 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { BriefcaseBusiness, Code2, Mail, FileDown } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { EASE_OUT } from "@/components/ui/reveal";
@@ -27,10 +28,47 @@ const itemVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
 };
 
+function useTypewriter(
+  words: readonly string[],
+  { typingSpeed = 55, deletingSpeed = 30, pauseTime = 1800 } = {},
+) {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    const currentWord = words[index % words.length];
+
+    if (!deleting && subIndex === currentWord.length) {
+      const timeout = setTimeout(() => setDeleting(true), pauseTime);
+      return () => clearTimeout(timeout);
+    }
+
+    if (deleting && subIndex === 0) {
+      setDeleting(false);
+      setIndex((previous) => (previous + 1) % words.length);
+      return;
+    }
+
+    const timeout = setTimeout(
+      () => setSubIndex((previous) => previous + (deleting ? -1 : 1)),
+      deleting ? deletingSpeed : typingSpeed,
+    );
+    return () => clearTimeout(timeout);
+  }, [subIndex, deleting, index, words, shouldReduceMotion, typingSpeed, deletingSpeed, pauseTime]);
+
+  if (shouldReduceMotion) return words[0];
+  return words[index % words.length].slice(0, subIndex);
+}
+
 export function HeroSection() {
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
   const shouldReduceMotion = useReducedMotion();
+  const typedRole = useTypewriter(profile.roles);
 
   // Antes de montar, mantém o mesmo resultado do servidor (tema padrão)
   // para não divergir do HTML renderizado no SSR e quebrar a hidratação.
@@ -47,11 +85,26 @@ export function HeroSection() {
         animate="show"
         className="space-y-8"
       >
+        <motion.div
+          variants={itemVariants}
+          className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+          </span>
+          {profile.availability}
+        </motion.div>
         <motion.p
           variants={itemVariants}
-          className="text-sm font-semibold tracking-[0.16em] text-muted-foreground uppercase"
+          className="flex items-center gap-1 text-sm font-semibold tracking-[0.16em] text-muted-foreground uppercase"
         >
-          Full Stack Developer
+          <span aria-hidden>{typedRole}</span>
+          <span
+            aria-hidden
+            className="inline-block h-4 w-[2px] animate-pulse bg-accent"
+          />
+          <span className="sr-only">{profile.role}</span>
         </motion.p>
         <div className="space-y-4">
           <motion.h1

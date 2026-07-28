@@ -324,4 +324,11 @@ export const profile = {
   linkedinUrl: "https://www.linkedin.com/in/lucasvasconcelos1202/",
   githubUrl: "https://github.com/lucasvass1",
   resumeUrl: "/Lucas_Vasconcelos_Curriculo.pdf",
+  availability: "Disponível para novos projetos",
+  roles: [
+    "Full Stack Developer",
+    "Desenvolvedor React & Node.js",
+    "Integração de APIs REST",
+    "Deploy em Cloud (AWS/GCP)",
+  ],
 };

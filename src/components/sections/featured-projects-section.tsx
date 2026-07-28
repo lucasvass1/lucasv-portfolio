@@ -6,6 +6,7 @@ import { Reveal, StaggerGrid } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getFeaturedProjects } from "@/lib/projects";
 import { statusVariantByProjectStatus } from "@/lib/project-status";
+import { getTechBadgeClass } from "@/lib/tech-colors";
 
 export async function FeaturedProjectsSection() {
   const projects = await getFeaturedProjects();
@@ -32,6 +33,8 @@ export async function FeaturedProjectsSection() {
               src={project.imageUrl}
               alt={`Imagem do projeto ${project.name}`}
               sizes="(max-width: 1024px) 100vw, 33vw"
+              demoUrl={project.demoUrl}
+              githubUrl={project.githubUrl}
             />
             <CardHeader className="space-y-3">
               <div className="flex items-start justify-between gap-3">
@@ -47,7 +50,7 @@ export async function FeaturedProjectsSection() {
             <CardContent className="space-y-5">
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
-                  <Badge key={tech} variant="neutral">
+                  <Badge key={tech} variant="neutral" className={getTechBadgeClass(tech)}>
                     {tech}
                   </Badge>
                 ))}
