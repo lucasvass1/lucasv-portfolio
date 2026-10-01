@@ -13,7 +13,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// URL base usada para resolver a imagem de compartilhamento (Open Graph) para
+// um endereço absoluto. Em produção, a Vercel expõe o domínio automaticamente;
+// localmente ou com domínio próprio, defina NEXT_PUBLIC_SITE_URL.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
+const ogImage = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Lucas Vasconcelos — Desenvolvedor Full Stack",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Lucas Vasconcelos | Full Stack Developer",
   description:
     "Portfólio profissional de Lucas Vasconcelos, desenvolvedor Full Stack com experiência em React, Node.js, TypeScript e cloud.",
@@ -29,12 +48,16 @@ export const metadata: Metadata = {
       "Projetos, experiência e competências em desenvolvimento Full Stack.",
     locale: "pt_BR",
     type: "website",
+    url: "/",
+    siteName: "Lucas Vasconcelos",
+    images: [ogImage],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Lucas Vasconcelos | Full Stack Developer",
     description:
       "Projetos, experiência e competências em desenvolvimento Full Stack.",
+    images: [ogImage],
   },
 };
 
